@@ -62,3 +62,6 @@ mvn clean test -Dconfig=dev.properties -DsuiteXmlFile=src/test/resources/testng.
 - add new abstraction layer for interaction with webdriver;
 - refactor class architecture, add generics;
 - clean test cases;
+
+### branch v1.3
+- add reporting through reportportal.io
