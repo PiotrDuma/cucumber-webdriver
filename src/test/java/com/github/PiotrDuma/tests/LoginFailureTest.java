@@ -30,7 +30,7 @@ public class LoginFailureTest {
         .clickSignInButton();
 
     assertThat(loginPage.isErrorMessageDisplayed())
-        .as("Check if login failed - invalid username")
+        .as("Should show error message, case: invalid username")
         .isTrue();
   }
 
@@ -43,33 +43,33 @@ public class LoginFailureTest {
         .clickSignInButton();
 
     assertThat(loginPage.isErrorMessageDisplayed())
-        .as("Check if login failed - invalid password")
+        .as("Should show error message, case: invalid password")
         .isTrue();
   }
 
   @Test(dataProvider = "invalidUsername")
   void shouldFailLoginWithBlankUsername(String username, String password) {
-    log.info(String.format("Test login with invalid username: %s AND %s", username, password));
+    log.info(String.format("Test login with invalid username: %s AND %s", "", password));
 
-    loginPage.setUsername(username)
+    loginPage.setUsername("")
         .setPassword(password)
         .clickSignInButton();
 
     assertThat(loginPage.isLoginMessageDisplayed())
-        .as("Check if login failed - blank username")
+        .as("Should show error message, case: blank username")
         .isTrue();
   }
 
   @Test(dataProvider = "invalidPassword")
   void shouldFailLoginWithBlankPassword(String username, String password) {
-    log.info(String.format("Test login with invalid username: %s AND %s", username, password));
+    log.info(String.format("Test login with invalid username: %s AND %s", username, ""));
 
     loginPage.setUsername(username)
-        .setPassword(password)
+        .setPassword("")
         .clickSignInButton();
 
     assertThat(loginPage.isPasswordMessageDisplayed())
-        .as("Check if login failed - blank password")
+        .as("Should show error message, case: blank password")
         .isTrue();
   }
 
