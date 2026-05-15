@@ -29,7 +29,10 @@ mvn clean test
 ```
 mvn clean test -Dconfig=dev.properties -DsuiteXmlFile=src/test/resources/testng.xml
 ```
-
+To run cucumber tests:
+```
+ mvn clean test -Dtest=TestNGRunner
+```
 
 ## Changelog:
 
