@@ -24,14 +24,14 @@ public class EmailSendSuccessPath {
   String subject;
   String message;
 
-  @Given("I am on the login page")
+  @Given("User is on the login page")
   public void openLoginPage() {
     log.info("Opening login page");
     loginPage = new LoginPage()
         .openPage();
   }
 
-  @When("I enter valid login {string} and password {string}")
+  @When("User enters valid login {string} and password {string}")
   public void enterValidCredentials(String login, String password) {
     log.info(String.format("Enter login %s and password %s", login, password));
     this.login = login;
@@ -41,13 +41,13 @@ public class EmailSendSuccessPath {
         .setPassword(password);
   }
 
-  @When("I click login button")
+  @When("User clicks login button")
   public void clickLoginButton() {
     log.info("Click login button");
     inboxPage = loginPage.clickSignInButton();
   }
 
-  @Then("I should see inbox page")
+  @Then("User is on the inbox page")
   public void shouldLoginWithValidCredentials() {
     log.info(String.format("Test login with valid credentials: %s AND %s", login, password));
 
@@ -57,7 +57,7 @@ public class EmailSendSuccessPath {
   }
 
 
-  @Given("I am logged in on my inbox page with credentials {string} and {string}")
+  @Given("User is logged in on my inbox page with credentials {string} and {string}")
   public void loginToInboxPage(String login, String password) {
     this.login = login;
     this.password = password;
@@ -66,12 +66,12 @@ public class EmailSendSuccessPath {
     clickLoginButton();
   }
 
-  @When("I click on new message button")
+  @When("User clicks on new message button")
   public void clickOnNewMessageButton() {
     messageWindow = inboxPage.clickNewMessageButton();
   }
 
-  @When("I create a new email with recipient {string}, subject {string}, and message {string}")
+  @When("User creates a new email with recipient {string}, subject {string}, and message {string}")
   public void createEmailWithValues(String recipient,
       String subject, String message) {
     this.recipient = recipient;
@@ -85,7 +85,7 @@ public class EmailSendSuccessPath {
         .closeFrame();
   }
 
-  @Then("the recipient, subject, and message fields should be filled correctly")
+  @Then("the recipient, subject, and message fields are filled correctly")
   public void shouldFieldsBeFilledCorrectly() {
     assertThat(messageWindow.getRecipients())
         .as("Check if recipient list contains provided email")
